@@ -13,10 +13,16 @@ class OwnerController extends Controller
         return view('owners.detail', compact('owner'));
     }
     
-    public function create(Request $request)
+    public function create()
     {
         $owner = new Owner;
+        return view('owners/create', compact('owner'));
+    }
 
+    public function store(Request $request)
+    {
+        $owner = new Owner;
+        
         $owner->first_name = $request->input('first_name');
         $owner->surname = $request->input('surname');
         $owner->email = $request->input('email');

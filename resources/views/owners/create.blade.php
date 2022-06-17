@@ -7,11 +7,11 @@
     <title>Create form</title>
 </head>
 <body>
-    @if ($owner_id)
-    <form action="/owner/{{$owner_id}}" method="post">
-    @else
-    <form action="{{ action('OwnerController@edit')}}" method="post">
+    @if ($owner->id)
+    <form action="/owner/{{$owner->id}}" method="post">
     @method('put')
+    @else
+    <form action="{{ action('App\Http\Controllers\OwnerController@store')}}" method="post">
     @endif
         @csrf
 
@@ -29,6 +29,8 @@
 
         <label>Address</label>
         <input type="text" name="address" value="{{old('address', $owner->address)}}">
+
+        <button>submit</button>
     </form>
 
     

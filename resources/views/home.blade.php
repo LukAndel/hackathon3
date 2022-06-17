@@ -10,7 +10,7 @@
     
     <a href="/list">List / search</a>
     <br>
-    <a href="/create">create</a>
+    <a href="/owners/create">create</a>
 
 
 </body>

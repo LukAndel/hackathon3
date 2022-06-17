@@ -25,9 +25,10 @@ Route::get('list', ['App\Http\Controllers\ListController', 'list']);
 Route::get('list-animal', ['App\Http\Controllers\ListController', 'searchAnimal']);
 Route::get('list-owner', ['App\Http\Controllers\ListController', 'searchOwner']);
 
-Route::post('create', ['App\Http\Controllers\OwnerController', 'create'])->name('create.owner');
-Route::put('create/{id}', ['App\Http\Controllers\OwnerController', 'edit'])->name('edit.owner');
-Route::delete('create/{id}', ['App\Http\Controllers\OwnerController', 'delete'])->name('delete.owner');
+Route::get('owners/create', ['App\Http\Controllers\OwnerController', 'create'])->name('create.owner');
+Route::post('owners/create', ['App\Http\Controllers\OwnerController', 'store']);
+Route::put('owners/create/{id}', ['App\Http\Controllers\OwnerController', 'edit'])->name('edit.owner');
+Route::delete('owners/create/{id}', ['App\Http\Controllers\OwnerController', 'delete'])->name('delete.owner');
 
 Route::post('create', ['App\Http\Controllers\AnimalController', 'create'])->name('create.animal');
 Route::put('create/{id}', ['App\Http\Controllers\AnimalController', 'edit'])->name('edit.animal');
