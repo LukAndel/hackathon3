@@ -27,7 +27,8 @@ Route::get('list-owner', ['App\Http\Controllers\ListController', 'searchOwner'])
 
 Route::get('owners/create', ['App\Http\Controllers\OwnerController', 'create'])->name('create.owner');
 Route::post('owners/create', ['App\Http\Controllers\OwnerController', 'store']);
-Route::put('owners/create/{id}', ['App\Http\Controllers\OwnerController', 'edit'])->name('edit.owner');
+Route::get('owners/create/{id}', ['App\Http\Controllers\OwnerController', 'edit'])->name('edit.owner');
+Route::put('owners/create/{id}', ['App\Http\Controllers\OwnerController', 'update']);
 Route::delete('owners/create/{id}', ['App\Http\Controllers\OwnerController', 'delete'])->name('delete.owner');
 
 Route::get('animals/create', ['App\Http\Controllers\AnimalController', 'create'])->name('create.animal');
