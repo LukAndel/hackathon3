@@ -18,5 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('list', ['App\Http\Controllers\ListController','list']);
+Route::get('list-animal', ['App\Http\Controllers\ListController','searchAnimal']);
+Route::get('list-owner', ['App\Http\Controllers\ListController','searchOwner']);
 Route::get('owners/detail/{$id}', ['App\Http\Controllers\OwnerController','detail']);
-Route::get('pets/detail/{$id}', ['App\Http\Controllers\PetController','detail']);
+Route::get('animals/detail/{$id}', ['App\Http\Controllers\AnimalController','detail']);
