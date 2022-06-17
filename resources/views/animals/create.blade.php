@@ -14,7 +14,8 @@
     <form action="{{ action('App\Http\Controllers\AnimalController@store')}}" method="post">
     @endif
         @csrf
-
+        {{-- {{dd($_GET)}} --}}
+        {{-- <input type="hidden" name="owner_id" value={{$POST[ownerId]}}> --}}
         <label>Name</label>
         <input type="text" name="name" value="{{old('name', $animal->name)}}">
 

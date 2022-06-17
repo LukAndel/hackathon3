@@ -7,6 +7,7 @@
     <title>Details of {{$owner->first_name}} {{$owner->surname}}</title>
 </head>
 <body>
+    @include('common/messages')
     <h1>{{$owner->first_name}} {{$owner->surname}}</h1>
     <p>email: {{$owner->email}}</p>
     <p>phone: {{$owner->phone}}</p>
@@ -18,6 +19,11 @@
     </ul>
     <button onclick="window.location.href='../../owners/create/{{$owner->id}}'">Edit</button>
     <br>
-    <button onclick="window.location.href='../../animal/create'">Add animal</button>
+    <form action="/animals/create" method="get">
+    @csrf
+    <input type="hidden" name="ownerId" value="{{$owner->id}}">
+    <button>Add animal</button>
+    {{-- onclick="window.location.href='../../animals/create'" --}}
+    </form>
 </body>
 </html>

@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+    @include('common/messages')
     <a href="/list">List / search</a>
     <br>
     <a href="/owners/create">create</a>

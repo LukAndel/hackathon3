@@ -19,21 +19,20 @@ class AnimalController extends Controller
     {
         $animal = new Animal;
 
-        $animal->first_name = $request->input('first_name');
-        $animal->surname = $request->input('surname');
-        $animal->email = $request->input('email');
-        $animal->phone = $request->input('phone');
-        $animal->address = $request->input('address');
+        $animal->name = $request->input('name');
+        $animal->breed = $request->input('breed');
+        $animal->age = $request->input('age');
+        $animal->weight = $request->input('weight');
+        // $animal->owner_id = $_GET['ownerId'];
 
         $animal->save();
-
+        session()->flash('success_message', 'New pet was created.');
         return redirect(url('animal/detail/' . $animal->id));
     }
 
     public function create()
     {
         $animal = new Animal;
-
         return view('animals.create', compact('animal'));
     }
 
@@ -46,7 +45,7 @@ class AnimalController extends Controller
         $animal->weight = $request->input('weight');
 
         $animal->save();
-
+        session()->flash('success_message', 'Pet details were updated.');
         return redirect(url('animals/detail/' . $animal->id));
     }
 
@@ -61,7 +60,7 @@ class AnimalController extends Controller
     {
         $animal = Animal::findOrFail($animal_id);
         $animal->delete();
-
+        session()->flash('success_message', 'Pet was deleted.');
         return redirect(url('home'));
     }
 }

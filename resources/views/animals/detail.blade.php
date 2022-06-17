@@ -7,6 +7,7 @@
     <title>Details of {{$animal->name}}</title>
 </head>
 <body>
+    @include('common/messages')
     <h1>{{$animal->name}}</h1>
     <h2>{{$animal->breed}}</h2>
     <h4>{{$animal->age}} Years old</h4>

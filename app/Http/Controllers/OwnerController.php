@@ -31,21 +31,19 @@ class OwnerController extends Controller
         $owner->address = $request->input('address');
 
         $owner->save();
-
+        session()->flash('success_message', 'New client was created, don\'t forget to add his pets too.');
         return redirect(url('owners/detail/' . $owner->id));
     }
 
     public function edit($id)
     {
-        $owner= Owner::findOrFail($id);
+        $owner = Owner::findOrFail($id);
         return view('owners/create', compact('owner'));
-
-        
     }
 
     public function update(Request $request, $id)
     {
-        $owner= Owner::findOrFail($id);
+        $owner = Owner::findOrFail($id);
 
         $owner->first_name = $request->input('first_name');
         $owner->surname = $request->input('surname');
@@ -54,20 +52,21 @@ class OwnerController extends Controller
         $owner->address = $request->input('address');
 
         $owner->save();
-
+        session()->flash('success_message', 'Client details were updated.');
         return redirect(url('owners/detail/' . $owner->id));
     }
 
     public function delete($id)
     {
-        $owner= Owner::findOrFail($id);
+        $owner = Owner::findOrFail($id);
         // $animals= Animal::where('owner_id',$id)->get();
-        $animals= $owner->animals;
+        $animals = $owner->animals;
 
-        foreach($animals as $animal){
+        foreach ($animals as $animal) {
             $animal->delete();
         }
         $owner->delete();
+        session()->flash('success_message', 'Client was deleted along with his pets.');
 
 
         return redirect(url('home'));
