@@ -8,7 +8,7 @@
 </head>
 <body>
     @if ($owner->id)
-    <form action="/owner/{{$owner->id}}" method="post">
+    <form action="/owners/create/{{$owner->id}}" method="post">
     @method('put')
     @else
     <form action="{{ action('App\Http\Controllers\OwnerController@store')}}" method="post">
@@ -32,6 +32,13 @@
 
         <button>submit</button>
     </form>
+    @if ($owner->id)
+    <form action="" method="post">
+        @method('delete')
+        @csrf
+        <button formaction="{{ action('App\Http\Controllers\OwnerController@delete', [$owner->id])}}">Delete</button>
+    </form>
+    @endif
 
     
 </body>

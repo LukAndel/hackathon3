@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Owner;
 use Illuminate\Http\Request;
+use App\Models\Animal;
 
 class OwnerController extends Controller
 {
@@ -34,8 +35,18 @@ class OwnerController extends Controller
         return redirect(url('owners/detail/'.$owner->id));
     }
 
-    public function edit(Request $request)
+    public function edit($id)
     {
+        $owner= Owner::findOrFail($id);
+        return view('owners/create', compact('owner'));
+
+        
+    }
+
+    public function update(Request $request, $id)
+    {
+        $owner= Owner::findOrFail($id);
+
         $owner->first_name = $request->input('first_name');
         $owner->surname = $request->input('surname');
         $owner->email = $request->input('email');
@@ -47,9 +58,17 @@ class OwnerController extends Controller
         return redirect(url('owners/detail/'.$owner->id));
     }
 
-    public function delete(Request $request)
+    public function delete($id)
     {
+        $owner= Owner::findOrFail($id);
+        // $animals= Animal::where('owner_id',$id)->get();
+        $animals= $owner->animals;
+
+        foreach($animals as $animal){
+            $animal->delete();
+        }
         $owner->delete();
+
 
         return redirect(url('home'));
     }
