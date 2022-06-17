@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use App\Models\Owner;
 use App\Models\Image;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
