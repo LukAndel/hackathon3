@@ -30,7 +30,8 @@ Route::post('owners/create', ['App\Http\Controllers\OwnerController', 'store']);
 Route::put('owners/create/{id}', ['App\Http\Controllers\OwnerController', 'edit'])->name('edit.owner');
 Route::delete('owners/create/{id}', ['App\Http\Controllers\OwnerController', 'delete'])->name('delete.owner');
 
-Route::post('create', ['App\Http\Controllers\AnimalController', 'create'])->name('create.animal');
-Route::put('create/{id}', ['App\Http\Controllers\AnimalController', 'edit'])->name('edit.animal');
-Route::delete('create/{id}', ['App\Http\Controllers\AnimalController', 'delete'])->name('delete.animal');
-
+Route::get('animals/create', ['App\Http\Controllers\AnimalController', 'create'])->name('create.animal');
+Route::post('animals/', ['App\Http\Controllers\AnimalController', 'store'])->name('store.animal');
+Route::get('animals/create/{id}', ['App\Http\Controllers\AnimalController', 'edit'])->name('edit.animal');
+Route::put('animals/create/{id}', ['App\Http\Controllers\AnimalController', 'update'])->name('update.animal');
+Route::delete('animals/create/{id}', ['App\Http\Controllers\AnimalController', 'delete'])->name('delete.animal');

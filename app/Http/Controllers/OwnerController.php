@@ -12,7 +12,7 @@ class OwnerController extends Controller
         $owner = Owner::findOrFail($owner_id);
         return view('owners.detail', compact('owner'));
     }
-    
+
     public function create()
     {
         $owner = new Owner;
@@ -22,7 +22,7 @@ class OwnerController extends Controller
     public function store(Request $request)
     {
         $owner = new Owner;
-        
+
         $owner->first_name = $request->input('first_name');
         $owner->surname = $request->input('surname');
         $owner->email = $request->input('email');
@@ -31,7 +31,7 @@ class OwnerController extends Controller
 
         $owner->save();
 
-        return redirect(url('owners/detail/'.$owner->id));
+        return redirect(url('owners/detail/' . $owner->id));
     }
 
     public function edit(Request $request)
@@ -44,7 +44,7 @@ class OwnerController extends Controller
 
         $owner->save();
 
-        return redirect(url('owners/detail/'.$owner->id));
+        return redirect(url('owners/detail/' . $owner->id));
     }
 
     public function delete(Request $request)

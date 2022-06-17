@@ -14,8 +14,8 @@ class AnimalController extends Controller
         $image = Image::where('id', $animal_id)->firstOrFail();
         return view('animals.detail', compact('animal', 'image'));
     }
-    
-    public function create(Request $request)
+
+    public function store(Request $request)
     {
         $animal = new Animal;
 
@@ -25,26 +25,41 @@ class AnimalController extends Controller
         $animal->phone = $request->input('phone');
         $animal->address = $request->input('address');
 
-        $owner->save();
+        $animal->save();
 
-        return redirect(url('animal/detail/'.$animal->id));
+        return redirect(url('animal/detail/' . $animal->id));
     }
 
-    public function edit(Request $request)
+    public function create()
     {
-        $animal->first_name = $request->input('first_name');
-        $animal->surname = $request->input('surname');
-        $animal->email = $request->input('email');
-        $animal->phone = $request->input('phone');
-        $animal->address = $request->input('address');
+        $animal = new Animal;
+
+        return view('animals.create', compact('animal'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $animal = Animal::findOrFail($id);
+        $animal->name = $request->input('name');
+        $animal->breed = $request->input('breed');
+        $animal->age = $request->input('age');
+        $animal->weight = $request->input('weight');
 
         $animal->save();
 
-        return redirect(url('animal/detail/'.$animal->id));
+        return redirect(url('animals/detail/' . $animal->id));
     }
 
-    public function delete(Request $request)
+    public function edit($animal_id)
     {
+        $animal = Animal::findOrFail($animal_id);
+
+        return view('animals.create', compact('animal'));
+    }
+
+    public function delete($animal_id)
+    {
+        $animal = Animal::findOrFail($animal_id);
         $animal->delete();
 
         return redirect(url('home'));

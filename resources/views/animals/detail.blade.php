@@ -17,5 +17,7 @@
     @endif
     <h3>Owner: <a href="/owners/detail/{{$animal->owner->id}}">{{$animal->owner->first_name}} {{$animal->owner->surname}}</a></h3>
     <img src="/images/{{$image->path}}" alt="">
+
+    <button onclick="window.location.href='../../animals/create/{{$animal->id}}'">Edit pet details</button>
 </body>
 </html>
