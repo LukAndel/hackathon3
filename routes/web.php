@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('list', ['App\Http\Controllers\ListController','list']);
+Route::get('owners/detail/{$id}', ['App\Http\Controllers\OwnerController','detail']);
+Route::get('pets/detail/{$id}', ['App\Http\Controllers\PetController','detail']);
