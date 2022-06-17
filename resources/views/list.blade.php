@@ -25,7 +25,7 @@
         <?php foreach($searchAnimal as $entry) : ?>
             <div class="detail">
                 <ul class="detail__info">
-                    <li>name: <a href="/animals/detail/{{$entry->id}}">{{$entry->name}}</a></li>
+                    <li>name: <a href="/owners/detail/{{$entry->id}}">{{$entry->name}}</a></li>
                     <li>owner: <a href="/animals/detail/{{$entry->owner_id}}">{{$entry->first_name}} {{$entry->surname}}</a></li>
                     <li>photo: <img src="/images/{{$entry->path}}" alt="{{$entry->path}}"></li>
                 </ul> 
@@ -38,7 +38,7 @@
         <?php foreach($searchOwner as $entry) : ?>
             <div class="detail">
                 <ul class="detail__info">
-                    <li>owner: <a href="/animals/detail/{{$entry->owner_id}}">{{$entry->first_name}} {{$entry->surname}}</a></li>
+                    <li>owner: <a href="/owners/detail/{{$entry->owner_id}}">{{$entry->first_name}} {{$entry->surname}}</a></li>
                     <li>name: <a href="/animals/detail/{{$entry->id}}">{{$entry->name}}</a></li>
                     <li>photo: <img src="/images/{{$entry->path}}" alt="{{$entry->path}}"></li>
                 </ul> 
@@ -53,7 +53,7 @@
     <div class="detail">
         <ul class="detail__info">
             <li>name: <a href="/animals/detail/{{$animal->id}}">{{$animal->name}}</a></li>
-            <li>owner: <a href="/animals/detail/{{$animal->owner_id}}">{{$animal->first_name}} {{$animal->surname}}</a></li>
+            <li>owner: <a href="/owners/detail/{{$animal->owner_id}}">{{$animal->first_name}} {{$animal->surname}}</a></li>
             <li>photo: <img src="/images/{{$animal->path}}" alt="{{$animal->path}}"></li>
         </ul> 
     </div>
